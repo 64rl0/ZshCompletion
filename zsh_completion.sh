@@ -8,6 +8,7 @@
 
 for completion in "${HOME}/.zsh/completion/site-functions/"*
 do
+    echo ${completion}
     [[ -r "${completion}" ]] && source "${completion}"
 done
 

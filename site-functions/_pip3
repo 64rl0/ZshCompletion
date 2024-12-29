@@ -1,4 +1,4 @@
-#compdef -P pip[0-9.]#
+#compdef pip3
 
 __pip() {
   compadd $( COMP_WORDS="$words[*]" \
@@ -6,4 +6,7 @@ __pip() {
              PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null )
 }
 
-__pip "$@"
+# don't run the completion function when being source-ed or eval-ed
+if [ "$funcstack[1]" = "_pip3" ]; then
+    __pip "$@"
+fi

@@ -2,7 +2,7 @@
 
 # zsh completion for pip3                                  -*- shell-script -*-
 
-_pip3() {
+__pip() {
   compadd $( COMP_WORDS="$words[*]" \
              COMP_CWORD=$((CURRENT-1)) \
              PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null )
@@ -10,6 +10,5 @@ _pip3() {
 
 # don't run the completion function when being source-ed or eval-ed
 if [ "$funcstack[1]" = "_pip3" ]; then
-    echo $funcstack[1]
-    _pip3 "$@"
+    __pip "$@"
 fi

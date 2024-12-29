@@ -1,5 +1,7 @@
 #compdef pip3
 
+# zsh completion for pip3                                  -*- shell-script -*-
+
 _pip3() {
   compadd $( COMP_WORDS="$words[*]" \
              COMP_CWORD=$((CURRENT-1)) \

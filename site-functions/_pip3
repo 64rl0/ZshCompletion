@@ -1,6 +1,6 @@
-#compdef pip3
+#compdef -P pip[0-9.]#
 
-# zsh completion for pip3                                  -*- shell-script -*-
+# zsh completion for pip                                  -*- shell-script -*-
 
 __pip() {
   compadd $( COMP_WORDS="$words[*]" \
@@ -8,7 +8,10 @@ __pip() {
              PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null )
 }
 
-# don't run the completion function when being source-ed or eval-ed
-if [ "$funcstack[1]" = "_pip3" ]; then
-    __pip "$@"
+if [[ $zsh_eval_context[-1] == loadautofunc ]]; then
+  # autoload from fpath, call function directly
+  __pip "$@"
+else
+  # eval/source/. command, register function for later
+  compdef __pip -P 'pip[0-9.]#'
 fi

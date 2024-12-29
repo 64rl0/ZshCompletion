@@ -10,5 +10,6 @@ _pip3() {
 
 # don't run the completion function when being source-ed or eval-ed
 if [ "$funcstack[1]" = "_pip3" ]; then
+    echo $funcstack[1]
     _pip3 "$@"
 fi

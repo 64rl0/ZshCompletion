@@ -1,4 +1,5 @@
-#compdef pip3
+#compdef -P pip[0-9.]#
+
 __pip() {
   compadd $( COMP_WORDS="$words[*]" \
              COMP_CWORD=$((CURRENT-1)) \
